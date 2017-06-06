@@ -12,7 +12,7 @@ enddate="2017-06-05"
 portfolio_table=pd.read_excel("portfolio.xlsx",sheetname=0)
 portfolio_table.head()
 
-#definition of tickers and dates lists, IMPROVEMENT, consult from dataframe directly
+#definition of tickers and dates lists, IMPROVEMENT, consult from portfolio dataframe directly
 tickers=portfolio_table['ticker'].astype(str).values.tolist()
 dates=portfolio_table['date'].astype(str).values.tolist()
 nshares=portfolio_table['shares'].astype(int).values.tolist()
