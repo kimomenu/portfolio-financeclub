@@ -4,10 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
-## Status
-#trying to add the currency exchange in a column for each df[i]
-#calculate then the position in CHF for each date
-#integrate the total portfolio value
 
 #actual date for output graph
 enddate="2017-06-05" 
