@@ -13,6 +13,7 @@ portfolio_table=pd.read_excel("portfolio.xlsx",sheetname=0)
 portfolio_table.head()
 
 #definition of tickers and dates lists, IMPROVEMENT, consult from portfolio dataframe directly
+names=portfolio_table['name'].astype(str).values.tolist()
 tickers=portfolio_table['ticker'].astype(str).values.tolist()
 dates=portfolio_table['date'].astype(str).values.tolist()
 nshares=portfolio_table['shares'].astype(int).values.tolist()
@@ -29,7 +30,7 @@ for i in range(0,len(tickers)):
     value=df[i].iat[0,3]
     df[i]['Index']=100*df[i]['Close']/value
     #print tickers[i]
-    df[i].to_csv(r'%s.txt'%(tickers[i]),sep=' ', index=False, header=True)
+    df[i].to_csv(r'%s.txt'%(names[i]),sep=' ', index=False, header=True)
 print df[5]
 
 
