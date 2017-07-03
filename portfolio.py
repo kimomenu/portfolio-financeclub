@@ -17,20 +17,19 @@ tickers=portfolio_table['ticker'].astype(str).values.tolist()
 dates=portfolio_table['date'].astype(str).values.tolist()
 nshares=portfolio_table['shares'].astype(int).values.tolist()
 scurrency=portfolio_table['currency'].astype(str).values.tolist()
-
-#print scurrency
+tsource=portfolio_table['source'].astype(str).values.tolist()
 
 #definition of portfolio dictionary
 df=dict()
 base_currency= "CHF"
 
-#data fetch from google finance, some tickers don't work, HKG:0699 and AMS:MT
+#data fetch from google finance, some tickers don't work, HKG:0699 and AMS:MT, SWX:SPSN
 for i in range(0,len(tickers)):
     df[i] = web.DataReader(tickers[i], 'google', dates[i], enddate)
     value=df[i].iat[0,3]
     df[i]['Index']=100*df[i]['Close']/value
     #print tickers[i]
-
+    df[i].to_csv(r'%s.txt'%(tickers[i]),sep=' ', index=False, header=True)
 print df[5]
 
 
@@ -67,5 +66,6 @@ plt.axhline(y=100, color='k', linestyle='dashed')
 save_file = "portfolio.png"
 plt.savefig(save_file)
 plt.close(fig)
+
 
 
